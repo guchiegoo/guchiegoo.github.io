@@ -25,7 +25,7 @@ describe('Home', () => {
     renderApp('/')
     expect(screen.getByRole('heading', { name: 'Where we’re headed.' })).toBeInTheDocument()
     expect(screen.getByText('US-raised sheep')).toBeInTheDocument()
-    expect(screen.getByText('Locally grazed and sheared')).toBeInTheDocument()
+    expect(screen.getByText('Grazed and sheared locally')).toBeInTheDocument()
     expect(screen.getByText('Fewer miles, less waste')).toBeInTheDocument()
     expect(screen.getByText('FROM PASTURE TO PIT LANE.')).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'The mission.' })).toBeInTheDocument()
