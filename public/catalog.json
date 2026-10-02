@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-10-02T16:00:00.000Z",
+  "business": "Wulesport",
+  "shippingCents": 600,
+  "styles": [
+    { "code": "HZ", "name": "Half-Zip Rolled Edge Fleece Sweatshirt", "priceCents": 6900, "images": [], "variants": [
+      { "sku": "WULE-HZ-OATGRAY-S", "color": "Oat Gray", "size": "S", "priceCents": 6900, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HZ-OATGRAY-M", "color": "Oat Gray", "size": "M", "priceCents": 6900, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HZ-OATGRAY-L", "color": "Oat Gray", "size": "L", "priceCents": 6900, "available": 0, "buyUrl": null },
+      { "sku": "WULE-HZ-FLOWERGRAY-S", "color": "Flower Gray", "size": "S", "priceCents": 6900, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HZ-FLOWERGRAY-M", "color": "Flower Gray", "size": "M", "priceCents": 6900, "available": 2, "buyUrl": null },
+      { "sku": "WULE-HZ-FLOWERGRAY-L", "color": "Flower Gray", "size": "L", "priceCents": 6900, "available": 1, "buyUrl": null }
+    ] },
+    { "code": "HD", "name": "Oversize Fleeced Hoodie", "priceCents": 4800, "images": [], "variants": [
+      { "sku": "WULE-HD-PINK-M", "color": "Pink", "size": "M", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-PINK-L", "color": "Pink", "size": "L", "priceCents": 4800, "available": 0, "buyUrl": null },
+      { "sku": "WULE-HD-MEDIUMGREEN-M", "color": "Medium Green", "size": "M", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-MEDIUMGREEN-L", "color": "Medium Green", "size": "L", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-KLEINBLUE-M", "color": "Klein Blue", "size": "M", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-KLEINBLUE-L", "color": "Klein Blue", "size": "L", "priceCents": 4800, "available": 0, "buyUrl": null },
+      { "sku": "WULE-HD-WHITE-M", "color": "White", "size": "M", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-WHITE-L", "color": "White", "size": "L", "priceCents": 4800, "available": 0, "buyUrl": null },
+      { "sku": "WULE-HD-BROWN-M", "color": "Brown", "size": "M", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-BROWN-L", "color": "Brown", "size": "L", "priceCents": 4800, "available": 0, "buyUrl": null },
+      { "sku": "WULE-HD-COFFEE-M", "color": "Coffee", "size": "M", "priceCents": 4800, "available": 1, "buyUrl": null },
+      { "sku": "WULE-HD-COFFEE-L", "color": "Coffee", "size": "L", "priceCents": 4800, "available": 1, "buyUrl": null }
+    ] },
+    { "code": "AWLS", "name": "Acid Wash Oversize Long Sleeve T-Shirt", "priceCents": 4200, "images": [], "variants": [
+      { "sku": "WULE-AWLS-PINK-M", "color": "Pink", "size": "M", "priceCents": 4200, "available": 1, "buyUrl": null },
+      { "sku": "WULE-AWLS-PINK-L", "color": "Pink", "size": "L", "priceCents": 4200, "available": 0, "buyUrl": null }
+    ] },
+    { "code": "SCT", "name": "Sorona Quick-Dry Cooling T-Shirt", "priceCents": 3500, "images": [], "variants": [
+      { "sku": "WULE-SCT-BLACK-L", "color": "Black", "size": "L", "priceCents": 3500, "available": 0, "buyUrl": null }
+    ] },
+    { "code": "WCT", "name": "Women's Slim-Fit Cropped T-Shirt", "priceCents": 3200, "images": [], "variants": [
+      { "sku": "WULE-WCT-LIGHTBLUE-M", "color": "Light Blue", "size": "M", "priceCents": 3200, "available": 1, "buyUrl": null }
+    ] }
+  ]
+}
