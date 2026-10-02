@@ -127,10 +127,10 @@ export function GarmentArt({ styleCode, color, label, className }: Props) {
       )}
 
       <text
-        x="116"
+        x="111"
         y={LABEL_Y[kind]}
         fontFamily='"Archivo Black", "Arial Black", Impact, sans-serif'
-        fontSize="11"
+        fontSize="10"
         fontWeight="900"
         letterSpacing="0.5"
         fill="var(--signal, #ff6a1a)"

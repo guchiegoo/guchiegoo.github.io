@@ -708,55 +708,152 @@ main:focus {
   }
 }
 
-/* ---------- product card (extended in Task 4) ---------- */
+/* ---------- product card ---------- */
 
 .card {
+  --rx: 0deg;
+  --ry: 0deg;
   position: relative;
   display: grid;
-  gap: 0.35rem;
-  padding: 0.9rem 0.9rem 1.1rem;
+  gap: 0.85rem;
+  padding: 0.75rem 0.75rem 1rem;
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 6px;
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition:
+    transform 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
+}
+
+.card:hover {
+  box-shadow: 0 18px 40px -22px rgba(29, 31, 28, 0.45);
+}
+
+.card__link {
+  display: grid;
+  gap: 0.3rem;
   text-decoration: none;
+  border-radius: 4px;
 }
 
 .card__art {
+  --tint: var(--field);
+  position: relative;
   display: grid;
   place-items: center;
   aspect-ratio: 1 / 1;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
   border-radius: 4px;
-  background: radial-gradient(ellipse at 50% 38%, #f8f4ec 0%, var(--field) 100%);
   overflow: hidden;
+  /* a faint wash of the shown colourway behind the garment */
+  background:
+    radial-gradient(ellipse at 50% 42%, #faf7f1 0%, transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--tint) 22%, var(--field)) 0%, var(--field) 100%);
+  transition: background 0.4s;
 }
 
-.card__art > svg,
-.card__art > img {
-  width: 78%;
-  height: 78%;
+.card__img {
+  width: 76%;
+  height: 76%;
   object-fit: contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card__img {
+    animation: flip-in 0.42s var(--ease-out) both;
+  }
+
+  .card:hover .card__img {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes flip-in {
+  from {
+    opacity: 0.2;
+    transform: perspective(600px) rotateY(-70deg);
+  }
+}
+
+.card__tag {
+  position: absolute;
+  top: 0.65rem;
+  left: 0.65rem;
+  padding: 0.25em 0.55em;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(244, 239, 230, 0.85);
+  border: 1px solid var(--line);
 }
 
 .card__name {
   font-family: var(--display);
   font-size: 1.05rem;
-  line-height: 1.1;
+  line-height: 1.12;
   text-transform: uppercase;
 }
 
 .card__price {
   font-family: var(--mono);
   font-weight: 700;
+  font-size: 1rem;
+}
+
+.card__swatches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--line);
+}
+
+.swatch {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px rgba(29, 31, 28, 0.35);
+  cursor: pointer;
+}
+
+.swatch[aria-pressed='true'] {
+  box-shadow: 0 0 0 2px var(--ink);
+}
+
+.swatch.is-soldout::after,
+.picker__btn.is-soldout .picker__dot::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--ink);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.card__count {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.8rem;
 }
 
 .badge {
   position: absolute;
-  top: 1.4rem;
-  right: 1.4rem;
-  padding: 0.3em 0.7em;
+  top: 0.65rem;
+  right: 0.65rem;
+  padding: 0.3em 0.65em;
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -772,6 +869,247 @@ main:focus {
   color: var(--clay-ink);
   border: 1.5px solid var(--clay-ink);
 }
+
+/* ---------- shop page ---------- */
+
+.page--shop {
+  display: block;
+}
+
+.page--shop .display {
+  font-size: clamp(3rem, 12vw, 8rem);
+}
+
+/* ---------- product page ---------- */
+
+.product {
+  padding-block: clamp(20px, 4vw, 48px) clamp(56px, 9vw, 120px);
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: clamp(1rem, 3vw, 2rem);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+
+.crumbs a {
+  text-underline-offset: 3px;
+}
+
+.product__grid {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+@media (min-width: 880px) {
+  .product__grid {
+    grid-template-columns: 1.15fr 1fr;
+    align-items: start;
+  }
+
+  .product__gallery {
+    position: sticky;
+    top: 88px;
+  }
+}
+
+.product__stage {
+  --tint: var(--field);
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, #faf7f1 0%, transparent 72%),
+    linear-gradient(160deg, color-mix(in srgb, var(--tint) 28%, var(--field)) 0%, var(--field) 100%);
+  transition: background 0.4s;
+}
+
+.product__img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .product__img {
+    animation: flip-in 0.45s var(--ease-out) both;
+  }
+}
+
+.product__thumbs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.product__thumb {
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--paper);
+  cursor: pointer;
+}
+
+.product__thumb[aria-pressed='true'] {
+  border: 2px solid var(--ink);
+}
+
+.product__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__info {
+  display: grid;
+  gap: 1.1rem;
+  align-content: start;
+}
+
+.product__name {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 5vw, 3.4rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.product__price {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.picker {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.picker__label {
+  display: flex;
+  gap: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.picker__value {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+.picker__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.picker__btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 46px;
+  padding: 0.5rem 0.9rem;
+  border: 1.5px solid rgba(29, 31, 28, 0.35);
+  border-radius: 4px;
+  background: var(--paper);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background-color 0.15s;
+}
+
+.picker__btn:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+
+.picker__btn[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--oat);
+}
+
+.picker--size .picker__btn {
+  min-width: 56px;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 1rem;
+}
+
+.picker__btn.is-soldout .picker__text {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+}
+
+.picker__btn:disabled {
+  cursor: not-allowed;
+  color: rgba(29, 31, 28, 0.62);
+  background: transparent;
+  border-style: dashed;
+}
+
+.picker__dot {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px rgba(29, 31, 28, 0.35);
+}
+
+.picker__btn[aria-pressed='true'] .picker__dot {
+  box-shadow: 0 0 0 2px var(--oat);
+}
+
+.picker__btn[aria-pressed='true'].is-soldout .picker__dot::after {
+  background: var(--oat);
+}
+
+.product__scarcity {
+  min-height: 1.5em;
+  font-family: var(--mono);
+  font-weight: 700;
+  color: var(--clay-ink);
+}
+
+.buy {
+  width: 100%;
+  min-height: 58px;
+  font-size: 1.1rem;
+}
+
+.buy::before {
+  left: 7px;
+  right: 7px;
+}
+
+.buy--off {
+  color: var(--ink);
+  cursor: not-allowed;
+}
+
+.buy--off::before {
+  background: transparent;
+  border: 2px dashed rgba(29, 31, 28, 0.5);
+}
+
+.product__ship {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
 
 /* ---------- mission ---------- */
 
@@ -861,7 +1199,7 @@ main:focus {
 
 .site-footer__mark {
   font-family: var(--display);
-  font-size: clamp(3rem, 15vw, 11rem);
+  font-size: clamp(2.4rem, 10.5vw, 8.5rem);
   line-height: 0.85;
   letter-spacing: -0.02em;
 }
