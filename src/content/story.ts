@@ -2,20 +2,24 @@
  * Editable brand copy. Keep claims honest: no certifications, no percentages,
  * nothing the business cannot back up. Lines marked PLACEHOLDER are for the
  * owner to confirm or rewrite.
+ *
+ * The current drop is fleece and performance tees, not wool. Wool from
+ * US-raised sheep is where the brand is headed, so the copy describes it as
+ * the mission, never as what today's pieces are made of.
  */
 
 export const hero = {
   headlineSlow: 'Grown slow.',
   headlineFast: 'Built fast.',
-  subline: 'Sustainable wool apparel with a racing heart.',
+  subline: 'Everyday performance wear with a racing heart.',
   cta: 'Shop the drop',
 }
 
 export const land = {
-  heading: 'From the land.',
+  heading: 'Where we’re headed.',
   beats: [
-    { title: 'US-raised sheep', body: 'Our wool starts with sheep raised here in the US.' },
-    { title: 'Locally grazed and sheared', body: 'Grazed on local land and sheared close to home.' },
+    { title: 'US-raised sheep', body: 'Our goal: a line made from wool grown by sheep raised here in the US.' },
+    { title: 'Grazed and sheared locally', body: 'Partnering with local land and shearing close to home.' },
     { title: 'Fewer miles, less waste', body: 'A shorter road from fleece to finished piece.' },
   ],
 }
@@ -43,12 +47,12 @@ export const about = {
   tagline: 'Wulesport = slow-grown materials, fast-moving life.',
   sections: [
     {
-      title: 'Sustainable US wool',
-      body: 'Wulesport is built around sustainable clothing made with wool from US-raised sheep.',
+      title: 'Today’s drop',
+      body: 'Our first pieces are fleece hoodies, half-zips and performance tees, made in small runs.',
     },
     {
-      title: 'Local sheep',
-      body: 'The sheep behind our wool are grazed and sheared locally, so the fibre travels fewer miles before it becomes something you wear.',
+      title: 'The wool mission',
+      body: 'Where Wulesport is headed: sustainable clothing made with wool from US-raised sheep that are grazed and sheared locally, so the fibre travels fewer miles before it becomes something you wear.',
     },
     {
       title: 'Charity work',

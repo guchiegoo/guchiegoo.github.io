@@ -8,7 +8,7 @@ describe('About', () => {
   it('renders its heading and the mission story', () => {
     renderApp('/about')
     expect(screen.getByRole('heading', { level: 1, name: 'Slow-grown materials, fast-moving life.' })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: 'Sustainable US wool' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'The wool mission' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Local sheep' })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: 'Charity work' })).toBeInTheDocument()
     expect(screen.getByText('Wulesport = slow-grown materials, fast-moving life.')).toBeInTheDocument()

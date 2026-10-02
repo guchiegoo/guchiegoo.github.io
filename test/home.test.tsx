@@ -7,7 +7,7 @@ describe('Home', () => {
   it('renders the headline and a Shop the drop link', async () => {
     renderApp('/')
     expect(screen.getByRole('heading', { level: 1, name: 'Grown slow. Built fast.' })).toBeInTheDocument()
-    expect(within(screen.getByRole('main')).getByText('Sustainable wool apparel with a racing heart.')).toBeInTheDocument()
+    expect(within(screen.getByRole('main')).getByText('Everyday performance wear with a racing heart.')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Shop the drop' })).toHaveAttribute('href', '/shop')
     expect(await screen.findByRole('heading', { name: 'The Drop' })).toBeInTheDocument()
   })
@@ -23,7 +23,7 @@ describe('Home', () => {
 
   it('has the land beats, the transition band and the mission', () => {
     renderApp('/')
-    expect(screen.getByRole('heading', { name: 'From the land.' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Where we’re headed.' })).toBeInTheDocument()
     expect(screen.getByText('US-raised sheep')).toBeInTheDocument()
     expect(screen.getByText('Locally grazed and sheared')).toBeInTheDocument()
     expect(screen.getByText('Fewer miles, less waste')).toBeInTheDocument()
