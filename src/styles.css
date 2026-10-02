@@ -1244,3 +1244,170 @@ main:focus {
     transform: none;
   }
 }
+
+/* ---------- FAQ ---------- */
+
+.faq {
+  max-width: 860px;
+  gap: 0;
+}
+
+.faq .display {
+  margin: 0.4rem 0 clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.faq__section {
+  width: 100%;
+  padding-block: 1.5rem;
+  border-top: 2px solid var(--ink);
+}
+
+.faq__h {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.qa {
+  border-bottom: 1px dashed var(--line);
+}
+
+.qa summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 52px;
+  padding-block: 0.6rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.qa summary::-webkit-details-marker {
+  display: none;
+}
+
+.qa summary::after {
+  content: '+';
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  border: 1.5px solid var(--ink);
+  transition: transform 0.2s var(--ease-out);
+}
+
+.qa[open] summary::after {
+  content: '–';
+  background: var(--ink);
+  color: var(--oat);
+}
+
+.qa__a {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0 0 1.1rem;
+  max-width: 62ch;
+}
+
+.qa__a a {
+  font-weight: 600;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+
+.notice {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  padding: 0.45em 0.8em;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--clay-ink);
+  border: 1.5px dashed var(--clay-ink);
+}
+
+/* ---------- about ---------- */
+
+.about__head {
+  padding-block: clamp(56px, 10vw, 128px) clamp(32px, 6vw, 72px);
+  background: linear-gradient(180deg, #f6f1e7 0%, var(--oat) 100%);
+}
+
+.about__title {
+  max-width: 14ch;
+  margin-top: 0.75rem;
+  color: var(--moss-deep);
+}
+
+.about__body {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.5rem);
+  padding-block: clamp(32px, 6vw, 72px) clamp(56px, 9vw, 112px);
+}
+
+@media (min-width: 860px) {
+  .about__body {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.about__section {
+  display: grid;
+  gap: 0.6rem;
+  padding-top: 1.1rem;
+  border-top: 2px dashed var(--moss);
+  font-size: 1.08rem;
+}
+
+.about__h {
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.about__tagline {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--oat);
+  border-top: 6px solid var(--signal);
+  padding-block: clamp(56px, 9vw, 112px);
+}
+
+.about__tagline .wrap {
+  display: grid;
+  gap: 2rem;
+  justify-items: start;
+}
+
+.about__equation {
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 6vw, 4.5rem);
+  line-height: 1;
+  font-style: italic;
+  text-transform: uppercase;
+  max-width: 18ch;
+}
+
+/* ---------- thanks ---------- */
+
+.thanks .display {
+  max-width: 14ch;
+}
+
+/* a chequered flag, drawn in CSS */
+.thanks__flag {
+  width: 72px;
+  height: 48px;
+  background:
+    conic-gradient(var(--ink) 25%, var(--paper) 0 50%, var(--ink) 0 75%, var(--paper) 0) 0 0 / 24px 24px;
+  border: 2px solid var(--ink);
+  transform: skewX(-12deg);
+}
