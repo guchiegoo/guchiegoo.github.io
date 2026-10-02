@@ -1,12 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-
-function Placeholder() {
-  return <h1>Wulesport</h1>
-}
+import { BrowserRouter } from 'react-router-dom'
+import App from './App'
+import './styles.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Placeholder />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 )
