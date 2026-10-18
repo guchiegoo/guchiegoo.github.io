@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-03T18:34:44.326Z",
+  "generatedAt": "2026-10-18T23:54:47.379Z",
   "business": "Wulesport",
   "shippingCents": 600,
   "styles": [
@@ -215,6 +215,22 @@
           "size": "M",
           "priceCents": 3200,
           "available": 1,
+          "buyUrl": null
+        }
+      ]
+    },
+    {
+      "code": "CDSH",
+      "name": "Car Dog Seatbelt Harness",
+      "priceCents": 0,
+      "images": [],
+      "variants": [
+        {
+          "sku": "WULE-CDSH-ONECOLOUR-ONESIZE",
+          "color": "One colour",
+          "size": "One size",
+          "priceCents": 0,
+          "available": 0,
           "buyUrl": null
         }
       ]
