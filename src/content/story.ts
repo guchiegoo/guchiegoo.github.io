@@ -34,8 +34,7 @@ export const drop = {
 
 export const mission = {
   heading: 'The mission.',
-  /** PLACEHOLDER: owner to confirm the charity line and name the causes. */
-  charity: 'Wulesport supports charity work. The causes we back will be shared here soon.',
+  charity: 'We support charity work built on warmth. Sheep grow their own — we can’t, so with your help, we do what we can to bring warmth to the people who need it.',
   video: 'Watch the story — coming soon',
 }
 
@@ -56,8 +55,7 @@ export const about = {
     },
     {
       title: 'Charity work',
-      /** PLACEHOLDER: owner to confirm. */
-      body: 'Giving back is part of the plan. We support charity work, and the causes we back will be shared here soon.',
+      body: 'Giving back is part of the plan. Sheep grow their own warmth; we don’t — so with your help, we support charity work that brings warmth to the people who need it.',
     },
   ],
 }

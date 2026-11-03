@@ -47,7 +47,6 @@ export default function Faq() {
         <h2 id="faq-returns" className="faq__h">
           Returns
         </h2>
-        <p className="notice">{policies.returns.placeholderNotice}</p>
         <Qa q="Can I return something?">
           <p>
             {policies.returns.window} {policies.returns.condition} {policies.returns.cost}
