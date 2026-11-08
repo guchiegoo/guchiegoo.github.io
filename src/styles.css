@@ -259,12 +259,23 @@ main:focus {
 
 .wordmark {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
   font-family: var(--display);
   font-size: clamp(1.15rem, 3.6vw, 1.5rem);
   letter-spacing: 0.02em;
   text-decoration: none;
   line-height: 1;
   padding-bottom: 6px;
+}
+
+.wordmark__badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex: none;
 }
 
 /* a short signal "pit board" bar under the wordmark */

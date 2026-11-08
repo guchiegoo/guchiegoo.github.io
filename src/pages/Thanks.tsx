@@ -1,10 +1,19 @@
+import confetti from 'canvas-confetti'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { prefersReducedMotion } from '../motion'
 
 /** Stripe Payment Links redirect here after a successful payment. */
 export default function Thanks() {
   useEffect(() => {
     document.title = 'Order received — Wulesport'
+    if (prefersReducedMotion()) return
+    confetti({
+      particleCount: 90,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#b5502f', '#1d1f1c', '#e9e1d3'],
+    })
   }, [])
 
   return (

@@ -1,6 +1,6 @@
 import { screen, within } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
-import { renderApp } from './render'
+import { describe, expect, it, vi } from 'vitest'
+import { renderApp, stubReducedMotion } from './render'
 
 const main = () => screen.getByRole('main')
 
@@ -52,5 +52,16 @@ describe('Thanks', () => {
       screen.getByText("You'll get a receipt from Stripe by email. We'll ship within 3 business days (placeholder)."),
     ).toBeInTheDocument()
     expect(within(main()).getByRole('link', { name: /shop/i })).toHaveAttribute('href', '/shop')
+  })
+
+  it('fires confetti once, unless the visitor asked for less motion', async () => {
+    const confetti = (await import('canvas-confetti')).default
+    renderApp('/thanks')
+    expect(confetti).toHaveBeenCalledTimes(1)
+
+    vi.mocked(confetti).mockClear()
+    stubReducedMotion(true)
+    renderApp('/thanks')
+    expect(confetti).not.toHaveBeenCalled()
   })
 })

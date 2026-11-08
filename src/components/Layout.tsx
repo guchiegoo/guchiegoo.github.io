@@ -30,6 +30,7 @@ export function Layout({ children }: { children: ReactNode }) {
       </a>
       <header className="site-header">
         <Link to="/" className="wordmark" aria-label="WULESPORT home">
+          <img src="/brand/logo.jpg" alt="" className="wordmark__badge" width={32} height={32} />
           WULESPORT
         </Link>
         <nav aria-label="Main" className="site-nav">
