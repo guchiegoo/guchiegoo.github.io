@@ -53,6 +53,15 @@ describe('parseCatalog', () => {
     raw.styles[1].variants[1].buyUrl = 42
     expect(parseCatalog(raw).styles[1].variants).toHaveLength(10)
   })
+
+  it('drops a buyUrl that is not a real https link, so it can never land in a Buy button href', () => {
+    const raw = sampleCatalog() as unknown as RawCatalog
+    raw.styles[1].variants[0].buyUrl = 'javascript:alert(1)'
+    raw.styles[1].variants[1].buyUrl = 'http://buy.stripe.com/x'
+    const variants = parseCatalog(raw).styles[1].variants
+    expect(variants[0].buyUrl).toBeNull()
+    expect(variants[1].buyUrl).toBeNull()
+  })
 })
 
 describe('isPurchasable', () => {

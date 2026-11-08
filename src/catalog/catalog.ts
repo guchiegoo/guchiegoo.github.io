@@ -6,6 +6,9 @@ const isObj = (x: unknown): x is Obj => typeof x === 'object' && x !== null && !
 const isStr = (x: unknown): x is string => typeof x === 'string' && x.length > 0
 const isNum = (x: unknown): x is number => typeof x === 'number' && Number.isFinite(x)
 
+/** buyUrl is rendered straight into an <a href>; only allow real Stripe Payment Links. */
+const isHttpsUrl = (x: unknown): x is string => isStr(x) && /^https:\/\//i.test(x)
+
 function invalid(): never {
   throw new Error('Invalid catalog')
 }
@@ -16,7 +19,7 @@ function parseVariant(raw: unknown): CatalogVariant | null {
   if (!isStr(sku) || !isStr(color) || !isStr(size)) return null
   if (!isNum(priceCents) || priceCents < 0) return null
   if (!isNum(available)) return null
-  if (buyUrl !== null && !isStr(buyUrl)) return null
+  if (buyUrl !== null && !isHttpsUrl(buyUrl)) return null
   return { sku, color, size, priceCents, available: Math.max(0, Math.floor(available)), buyUrl }
 }
 
