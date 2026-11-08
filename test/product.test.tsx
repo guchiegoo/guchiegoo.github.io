@@ -36,7 +36,9 @@ describe('Product HZ', () => {
   it('offers Message to order while there is no buy link yet', async () => {
     renderApp('/p/HZ')
     const link = await screen.findByRole('link', { name: 'Message to order — $69' })
-    expect(link.getAttribute('href')).toMatch(/^mailto:.*subject=Order%3A%20Half-Zip/)
+    expect(link).toHaveAttribute('href', 'https://ig.me/m/wulesport.us')
+    expect(link).toHaveAttribute('target', '_blank')
+    expect(screen.getByText('Mention: Half-Zip Rolled Edge Fleece Sweatshirt — Flower Gray, S — $69')).toBeInTheDocument()
     expect(screen.queryByRole('link', { name: /^Buy/ })).toBeNull()
     expect(screen.queryByRole('button', { name: 'Coming soon' })).toBeNull()
   })

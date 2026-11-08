@@ -1105,6 +1105,18 @@ main:focus {
   border: 2px dashed rgba(29, 31, 28, 0.5);
 }
 
+.buy-stack {
+  width: 100%;
+}
+
+.buy-stack__hint {
+  margin-top: 0.5em;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--clay-ink);
+  text-align: center;
+}
+
 .product__ship {
   font-family: var(--mono);
   font-size: 0.85rem;
