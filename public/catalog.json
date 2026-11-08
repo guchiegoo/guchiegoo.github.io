@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T23:54:47.379Z",
+  "generatedAt": "2026-11-08T15:21:02.420Z",
   "business": "Wulesport",
   "shippingCents": 600,
   "styles": [
@@ -7,7 +7,10 @@
       "code": "HZ",
       "name": "Half-Zip Rolled Edge Fleece Sweatshirt",
       "priceCents": 6900,
-      "images": [],
+      "images": [
+        "images/HZ/main.jpg",
+        "images/HZ/oat-gray.jpg"
+      ],
       "variants": [
         {
           "sku": "WULE-HZ-FLOWERGRAY-S",
@@ -63,7 +66,14 @@
       "code": "HD",
       "name": "Oversize Fleeced Hoodie",
       "priceCents": 4800,
-      "images": [],
+      "images": [
+        "images/HD/main.jpg",
+        "images/HD/brown.jpg",
+        "images/HD/coffee.jpg",
+        "images/HD/klein-blue.jpg",
+        "images/HD/medium-green.jpg",
+        "images/HD/pink.jpg"
+      ],
       "variants": [
         {
           "sku": "WULE-HD-BROWN-M",
@@ -167,7 +177,9 @@
       "code": "AWLS",
       "name": "Acid Wash Oversize Long Sleeve T-Shirt",
       "priceCents": 4200,
-      "images": [],
+      "images": [
+        "images/AWLS/main.jpg"
+      ],
       "variants": [
         {
           "sku": "WULE-AWLS-PINK-M",
@@ -207,7 +219,9 @@
       "code": "WCT",
       "name": "Women's Slim-Fit Cropped T-Shirt",
       "priceCents": 3200,
-      "images": [],
+      "images": [
+        "images/WCT/main.jpg"
+      ],
       "variants": [
         {
           "sku": "WULE-WCT-LIGHTBLUE-M",
