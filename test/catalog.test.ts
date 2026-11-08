@@ -77,14 +77,14 @@ describe('styleAvailability', () => {
     expect(styleAvailability(styleOf(sampleCatalog(), 'SCT'))).toBe('sold-out')
   })
 
-  it('is coming-soon for HD when every buyUrl is null', () => {
-    expect(styleAvailability(styleOf(sampleCatalog(), 'HD'))).toBe('coming-soon')
+  it('is available for HD even when every buyUrl is null: an in-stock variant can still be ordered (Message to order)', () => {
+    expect(styleAvailability(styleOf(sampleCatalog(), 'HD'))).toBe('available')
   })
 
-  it('is available for HD once an in-stock variant has a buyUrl', () => {
+  it('is sold-out once every variant has zero stock, buyUrl or not', () => {
     const hd = styleOf(sampleCatalog(), 'HD')
-    hd.variants.find((v) => v.sku === 'WULE-HD-PINK-M')!.buyUrl = 'https://buy.stripe.com/x'
-    expect(styleAvailability(hd)).toBe('available')
+    for (const v of hd.variants) v.available = 0
+    expect(styleAvailability(hd)).toBe('sold-out')
   })
 })
 

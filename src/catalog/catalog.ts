@@ -53,10 +53,13 @@ export function isPurchasable(v: CatalogVariant): boolean {
   return v.available > 0 && v.buyUrl !== null
 }
 
+/**
+ * The shop grid's badge: 'available' when anything can be ordered today, with or without a Stripe
+ * link yet (an in-stock variant with no link is still orderable — see BuyButton's "Message to
+ * order" stopgap), 'sold-out' only when nothing is. Never label an orderable style "coming soon".
+ */
 export function styleAvailability(s: CatalogStyle): StyleAvailability {
-  if (s.variants.some(isPurchasable)) return 'available'
-  if (s.variants.some((v) => v.available > 0)) return 'coming-soon'
-  return 'sold-out'
+  return s.variants.some((v) => v.available > 0) ? 'available' : 'sold-out'
 }
 
 /** Colours in order of first appearance; soldOut when no variant of that colour has stock. */

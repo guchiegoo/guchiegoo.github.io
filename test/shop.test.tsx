@@ -21,10 +21,10 @@ describe('Shop', () => {
     expect(within(sct).getByText('Sold out')).toBeInTheDocument()
   })
 
-  it('tags HD as coming soon because no buy links exist yet', async () => {
+  it('shows no badge for HD: it is in stock and orderable even though no buy link exists yet', async () => {
     renderApp('/shop')
     const hd = await cardLink(/Oversize Fleeced Hoodie/)
-    expect(within(hd).getByText('Coming soon')).toBeInTheDocument()
+    expect(within(hd).queryByText('Coming soon')).toBeNull()
     expect(within(hd).queryByText('Sold out')).toBeNull()
   })
 

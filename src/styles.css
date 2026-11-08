@@ -870,11 +870,6 @@ main:focus {
   text-transform: uppercase;
 }
 
-.badge--soon {
-  background: var(--ink);
-  color: var(--oat);
-}
-
 .badge--out {
   background: var(--paper);
   color: var(--clay-ink);

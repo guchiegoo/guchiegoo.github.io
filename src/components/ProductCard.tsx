@@ -72,7 +72,6 @@ export function ProductCard({ style }: { style: CatalogStyle }) {
           </span>
           <ProductImage key={shown} style={style} color={shown} alt={`${style.name} in ${shown}`} className="card__img" />
           {availability === 'sold-out' && <span className="badge badge--out">Sold out</span>}
-          {availability === 'coming-soon' && <span className="badge badge--soon">Coming soon</span>}
         </div>
         <span className="card__name">{style.name}</span>
         <span className="card__price">{formatPrice(style.priceCents)}</span>

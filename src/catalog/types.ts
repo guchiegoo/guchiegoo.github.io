@@ -28,4 +28,4 @@ export interface Catalog {
   styles: CatalogStyle[]
 }
 
-export type StyleAvailability = 'available' | 'coming-soon' | 'sold-out'
+export type StyleAvailability = 'available' | 'sold-out'
