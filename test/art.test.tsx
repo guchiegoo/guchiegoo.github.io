@@ -49,7 +49,7 @@ describe('GarmentArt', () => {
 
 describe('ProductImage', () => {
   it('draws garment art when the style has no images', () => {
-    const style = styleOf(sampleCatalog(), 'HD')
+    const style = { ...styleOf(sampleCatalog(), 'HD'), images: [] }
     render(<ProductImage style={style} color="Pink" alt="Pink hoodie" />)
     expect(screen.getByRole('img', { name: 'Pink hoodie' }).tagName.toLowerCase()).toBe('svg')
   })
