@@ -24,7 +24,7 @@ export default function Shop() {
       {state.status === 'error' && <p className="status">Couldn't load the shop. Please refresh.</p>}
       {state.status === 'ready' && (
         <ul className="grid">
-          {state.catalog.styles.map((style, i) => (
+          {state.catalog.styles.filter((style) => style.priceCents > 0).map((style, i) => (
             <li key={style.code}>
               <Reveal delay={(i % 3) * 90}>
                 <ProductCard style={style} />

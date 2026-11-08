@@ -9,7 +9,7 @@ describe('useCatalog', () => {
     const { result } = renderHook(() => useCatalog())
     expect(result.current.status).toBe('loading')
     await waitFor(() => expect(result.current.status).toBe('ready'))
-    expect(result.current.catalog?.styles).toHaveLength(5)
+    expect(result.current.catalog?.styles).toHaveLength(6)
   })
 
   it('fetches /catalog.json with no-store caching', async () => {

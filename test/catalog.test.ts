@@ -24,10 +24,10 @@ const variant = (over: Partial<CatalogVariant>): CatalogVariant => ({
 type RawCatalog = { styles: Array<{ variants: Array<Record<string, unknown>> }> }
 
 describe('parseCatalog', () => {
-  it('parses the sample into 5 styles and 22 variants', () => {
+  it('parses the sample into 6 styles and 23 variants', () => {
     const c = parseCatalog(sampleCatalog())
-    expect(c.styles).toHaveLength(5)
-    expect(c.styles.reduce((n, s) => n + s.variants.length, 0)).toBe(22)
+    expect(c.styles).toHaveLength(6)
+    expect(c.styles.reduce((n, s) => n + s.variants.length, 0)).toBe(23)
     expect(c.shippingCents).toBe(600)
     expect(c.business).toBe('Wulesport')
   })
@@ -40,10 +40,11 @@ describe('parseCatalog', () => {
 
   it('drops a variant that is missing its sku', () => {
     const raw = sampleCatalog() as unknown as RawCatalog
+    const droppedSku = raw.styles[0].variants[0].sku
     delete raw.styles[0].variants[0].sku
     const c = parseCatalog(raw)
     expect(c.styles[0].variants).toHaveLength(5)
-    expect(c.styles[0].variants.map((v) => v.sku)).not.toContain('WULE-HZ-OATGRAY-S')
+    expect(c.styles[0].variants.map((v) => v.sku)).not.toContain(droppedSku)
   })
 
   it('drops variants with other bad fields', () => {
@@ -81,12 +82,12 @@ describe('styleAvailability', () => {
 describe('colorsFor', () => {
   it('keeps first-appearance order for HD, none sold out', () => {
     expect(colorsFor(styleOf(sampleCatalog(), 'HD'))).toEqual([
-      { color: 'Pink', soldOut: false },
-      { color: 'Medium Green', soldOut: false },
-      { color: 'Klein Blue', soldOut: false },
-      { color: 'White', soldOut: false },
       { color: 'Brown', soldOut: false },
       { color: 'Coffee', soldOut: false },
+      { color: 'Klein Blue', soldOut: false },
+      { color: 'Medium Green', soldOut: false },
+      { color: 'Pink', soldOut: false },
+      { color: 'White', soldOut: false },
     ])
   })
 

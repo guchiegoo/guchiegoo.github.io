@@ -36,9 +36,9 @@ describe('FAQ', () => {
     expect(await within(main()).findByText(/Flat \$6 shipping/)).toBeInTheDocument()
   })
 
-  it('marks the returns policy and the contact email as placeholders', () => {
+  it('shows the confirmed returns and sizing copy, with contact still a placeholder', () => {
     renderApp('/faq')
-    expect(within(main()).getByText(/placeholder policy/i)).toBeInTheDocument()
+    expect(within(main()).getByText(/Returns are accepted within 14 days/)).toBeInTheDocument()
     expect(within(main()).getByText(/Oversize fits run roomy — size down for a regular fit/)).toBeInTheDocument()
     expect(within(main()).getByText('hello@wulesport.com (placeholder — owner to confirm)')).toBeInTheDocument()
   })

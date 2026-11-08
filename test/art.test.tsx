@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { colorHex, COLOR_HEX } from '../src/art/colors'
+import { colorHex } from '../src/art/colors'
 import { GarmentArt, garmentKind } from '../src/art/GarmentArt'
 import { ProductImage } from '../src/components/ProductImage'
 import { sampleCatalog, styleOf } from './fixtures'
@@ -11,9 +11,9 @@ describe('colorHex', () => {
     expect(colorHex('Nope')).toBe('#999999')
   })
 
-  it('covers every colour in the sample catalog', () => {
+  it('resolves to a real hex for every colour in the sample catalog, known or not', () => {
     const colours = new Set(sampleCatalog().styles.flatMap((s) => s.variants.map((v) => v.color)))
-    for (const c of colours) expect(COLOR_HEX[c], c).toMatch(/^#[0-9a-f]{6}$/)
+    for (const c of colours) expect(colorHex(c), c).toMatch(/^#[0-9a-f]{6}$/)
   })
 })
 

@@ -7,18 +7,19 @@ const colourGroup = () => screen.getByRole('group', { name: 'Colour' })
 const sizeGroup = () => screen.getByRole('group', { name: 'Size' })
 
 describe('Product HZ', () => {
-  it('defaults to Oat Gray / S', async () => {
+  it('defaults to Flower Gray / S, the first in-stock colour', async () => {
     renderApp('/p/HZ')
     expect(await screen.findByRole('heading', { level: 1, name: 'Half-Zip Rolled Edge Fleece Sweatshirt' })).toBeInTheDocument()
-    expect(within(colourGroup()).getByRole('button', { name: 'Oat Gray' })).toHaveAttribute('aria-pressed', 'true')
-    expect(within(colourGroup()).getByRole('button', { name: 'Flower Gray' })).toHaveAttribute('aria-pressed', 'false')
+    expect(within(colourGroup()).getByRole('button', { name: 'Flower Gray' })).toHaveAttribute('aria-pressed', 'true')
+    expect(within(colourGroup()).getByRole('button', { name: 'Oat Gray' })).toHaveAttribute('aria-pressed', 'false')
     expect(within(sizeGroup()).getByRole('button', { name: 'S' })).toHaveAttribute('aria-pressed', 'true')
     expect(screen.getByText('$69')).toBeInTheDocument()
   })
 
   it('disables Oat Gray L as sold out', async () => {
     renderApp('/p/HZ')
-    await screen.findByRole('group', { name: 'Size' })
+    await screen.findByRole('group', { name: 'Colour' })
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Oat Gray' }))
     const l = within(sizeGroup()).getByRole('button', { name: 'L, sold out' })
     expect(l).toBeDisabled()
   })
@@ -32,11 +33,12 @@ describe('Product HZ', () => {
     expect(screen.getByText('Only 2 left')).toBeInTheDocument()
   })
 
-  it('shows a disabled Coming soon button while there is no buy link', async () => {
+  it('offers Message to order while there is no buy link yet', async () => {
     renderApp('/p/HZ')
-    const btn = await screen.findByRole('button', { name: 'Coming soon' })
-    expect(btn).toBeDisabled()
+    const link = await screen.findByRole('link', { name: 'Message to order — $69' })
+    expect(link.getAttribute('href')).toMatch(/^mailto:.*subject=Order%3A%20Half-Zip/)
     expect(screen.queryByRole('link', { name: /^Buy/ })).toBeNull()
+    expect(screen.queryByRole('button', { name: 'Coming soon' })).toBeNull()
   })
 
   it('shows the shipping and returns line', async () => {
@@ -51,6 +53,8 @@ describe('Product HD with a live buy link', () => {
     styleOf(catalog, 'HD').variants.find((v) => v.sku === 'WULE-HD-PINK-M')!.buyUrl = 'https://buy.stripe.com/test_123'
     renderApp('/p/HD', catalog)
     await screen.findByRole('group', { name: 'Colour' })
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Pink' }))
+    fireEvent.click(within(sizeGroup()).getByRole('button', { name: 'M' }))
     expect(within(colourGroup()).getByRole('button', { name: 'Pink' })).toHaveAttribute('aria-pressed', 'true')
     expect(within(sizeGroup()).getByRole('button', { name: 'M' })).toHaveAttribute('aria-pressed', 'true')
     const buy = screen.getByRole('link', { name: 'Buy — $48' })

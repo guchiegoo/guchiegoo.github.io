@@ -103,7 +103,7 @@ function ProductDetail({ style, catalog }: { style: CatalogStyle; catalog: Catal
             {scarcity}
           </p>
 
-          <BuyButton variant={variant} />
+          <BuyButton variant={variant} styleName={style.name} />
 
           <p className="product__ship">
             Flat {formatPrice(catalog.shippingCents)} US shipping · 14-day returns
