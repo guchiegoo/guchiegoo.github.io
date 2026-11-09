@@ -1,5 +1,5 @@
 import { fireEvent, screen, within } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 import { sampleCatalog, styleOf } from './fixtures'
 import { renderApp } from './render'
 
@@ -46,6 +46,27 @@ describe('Product HZ', () => {
   it('shows the shipping and returns line', async () => {
     renderApp('/p/HZ')
     expect(await screen.findByText('Flat $6 US shipping · 14-day returns')).toBeInTheDocument()
+  })
+
+  it('copies the exact piece to the clipboard when Message to order is clicked, so the buyer can just paste', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } })
+    renderApp('/p/HZ')
+    const link = await screen.findByRole('link', { name: 'Message to order — $69' })
+    fireEvent.click(link)
+    expect(writeText).toHaveBeenCalledWith('Half-Zip Rolled Edge Fleece Sweatshirt — Flower Gray, S — $69')
+    expect(await screen.findByText('Copied — paste it into the message: “Half-Zip Rolled Edge Fleece Sweatshirt — Flower Gray, S — $69”')).toBeInTheDocument()
+  })
+
+  it('does not show a stale "Copied" message for a colour/size that was never actually copied', async () => {
+    const writeText = vi.fn().mockResolvedValue(undefined)
+    vi.stubGlobal('navigator', { ...navigator, clipboard: { writeText } })
+    renderApp('/p/HZ')
+    fireEvent.click(await screen.findByRole('link', { name: 'Message to order — $69' }))
+    await screen.findByText(/^Copied/)
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Oat Gray' }))
+    expect(screen.queryByText(/^Copied/)).toBeNull()
+    expect(screen.getByText('Mention: Half-Zip Rolled Edge Fleece Sweatshirt — Oat Gray, S — $69')).toBeInTheDocument()
   })
 })
 
