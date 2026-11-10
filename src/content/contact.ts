@@ -4,6 +4,9 @@ import type { CatalogVariant } from '../catalog/types'
 /** The owner's verified Instagram handle (owner-supplied 2026-10-06, confirmed live). */
 const INSTAGRAM_HANDLE = 'wulesport.us'
 
+/** How the handle reads on the page, e.g. in the FAQ contact line. */
+export const INSTAGRAM_DISPLAY = `@${INSTAGRAM_HANDLE}`
+
 /**
  * A stopgap order channel for a variant that's live and in stock but has no
  * Stripe Payment Link yet. Opens a direct-message thread with the owner on

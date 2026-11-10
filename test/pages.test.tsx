@@ -36,11 +36,11 @@ describe('FAQ', () => {
     expect(await within(main()).findByText(/Flat \$6 shipping/)).toBeInTheDocument()
   })
 
-  it('shows the confirmed returns and sizing copy, with contact still a placeholder', () => {
+  it('shows the confirmed returns, sizing and contact copy', () => {
     renderApp('/faq')
     expect(within(main()).getByText(/Returns are accepted within 14 days/)).toBeInTheDocument()
     expect(within(main()).getByText(/Oversize fits run roomy — size down for a regular fit/)).toBeInTheDocument()
-    expect(within(main()).getByText('hello@wulesport.com (placeholder — owner to confirm)')).toBeInTheDocument()
+    expect(within(main()).getByRole('link', { name: '@wulesport.us' })).toHaveAttribute('href', 'https://ig.me/m/wulesport.us')
   })
 })
 
@@ -49,7 +49,7 @@ describe('Thanks', () => {
     renderApp('/thanks')
     expect(screen.getByRole('heading', { level: 1, name: 'Order received — thank you!' })).toBeInTheDocument()
     expect(
-      screen.getByText("You'll get a receipt from Stripe by email. We'll ship within 3 business days (placeholder)."),
+      screen.getByText("You'll get a receipt from Stripe by email. Orders ship within 3 business days."),
     ).toBeInTheDocument()
     expect(within(main()).getByRole('link', { name: /shop/i })).toHaveAttribute('href', '/shop')
   })

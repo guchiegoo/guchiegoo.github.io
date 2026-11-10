@@ -2,6 +2,7 @@ import { useEffect, type ReactNode } from 'react'
 import { formatPrice } from '../catalog/catalog'
 import { useCatalogState } from '../catalog/CatalogContext'
 import { policies, withPrice } from '../content/policies'
+import { INSTAGRAM_DISPLAY, messageToOrderHref } from '../content/contact'
 
 function Qa({ q, children, open }: { q: string; children: ReactNode; open?: boolean }) {
   return (
@@ -70,7 +71,11 @@ export default function Faq() {
         </h2>
         <Qa q="How do I reach you?">
           <p>
-            Email <a href={`mailto:${policies.contact.email}`}>{policies.contact.emailLabel}</a>
+            Message{' '}
+            <a href={messageToOrderHref()} target="_blank" rel="noopener noreferrer">
+              {INSTAGRAM_DISPLAY}
+            </a>{' '}
+            on Instagram.
           </p>
         </Qa>
       </section>

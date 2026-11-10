@@ -66,9 +66,10 @@ The station should write the `images` list, so add images through the station an
 ## Editable copy
 
 - `src/content/story.ts`: the home page, story and mission text.
-- `src/content/policies.ts`: shipping, returns, sizing and contact.
+- `src/content/policies.ts`: shipping, returns, sizing.
+- `src/content/contact.ts`: the live Instagram DM channel (`@wulesport.us`) used for both the Buy-button stopgap and the FAQ contact line.
 
-Lines marked **PLACEHOLDER** (the charity line, the returns policy, sizing advice, the 3-day ship time and the contact email) need the owner's confirmation before launch.
+All five owner lines the station's Go-Live checklist tracks (charity, returns, sizing, ship time, contact) are confirmed — none say PLACEHOLDER anymore.
 
 ## Deploy to GitHub Pages
 
