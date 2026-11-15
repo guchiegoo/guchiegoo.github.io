@@ -88,6 +88,30 @@ describe('Product HD with a live buy link', () => {
   })
 })
 
+describe('Product HD with a live buy link and a channel tag in the URL', () => {
+  it('carries a valid ?src= tag onto the buy link as client_reference_id', async () => {
+    const catalog = sampleCatalog()
+    styleOf(catalog, 'HD').variants.find((v) => v.sku === 'WULE-HD-PINK-M')!.buyUrl = 'https://buy.stripe.com/test_123'
+    renderApp('/p/HD?src=ig', catalog)
+    await screen.findByRole('group', { name: 'Colour' })
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Pink' }))
+    fireEvent.click(within(sizeGroup()).getByRole('button', { name: 'M' }))
+    const buy = screen.getByRole('link', { name: 'Buy — $48' })
+    expect(buy).toHaveAttribute('href', 'https://buy.stripe.com/test_123?client_reference_id=ig')
+  })
+
+  it('ignores an invalid ?src= tag and leaves the buy link untouched', async () => {
+    const catalog = sampleCatalog()
+    styleOf(catalog, 'HD').variants.find((v) => v.sku === 'WULE-HD-PINK-M')!.buyUrl = 'https://buy.stripe.com/test_123'
+    renderApp('/p/HD?src=Not Valid!', catalog)
+    await screen.findByRole('group', { name: 'Colour' })
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Pink' }))
+    fireEvent.click(within(sizeGroup()).getByRole('button', { name: 'M' }))
+    const buy = screen.getByRole('link', { name: 'Buy — $48' })
+    expect(buy).toHaveAttribute('href', 'https://buy.stripe.com/test_123')
+  })
+})
+
 describe('Product SCT (fully sold out)', () => {
   it('keeps the sold-out colour selectable and shows Sold out', async () => {
     renderApp('/p/SCT')
