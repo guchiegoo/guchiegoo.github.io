@@ -1062,7 +1062,7 @@ main:focus {
 .picker__btn:disabled {
   cursor: not-allowed;
   color: rgba(29, 31, 28, 0.62);
-  background: transparent;
+  background: rgba(29, 31, 28, 0.08);
   border-style: dashed;
 }
 
