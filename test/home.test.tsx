@@ -6,7 +6,7 @@ import { renderApp, stubReducedMotion } from './render'
 describe('Home', () => {
   it('renders the headline and a Shop the drop link', async () => {
     renderApp('/')
-    expect(screen.getByRole('heading', { level: 1, name: 'Grown slow. Built fast.' })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1, name: 'Grown slow. Naturally fast.' })).toBeInTheDocument()
     expect(within(screen.getByRole('main')).getByText('Everyday performance wear with a racing heart.')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Shop the drop' })).toHaveAttribute('href', '/shop')
     expect(await screen.findByRole('heading', { name: 'The Drop' })).toBeInTheDocument()

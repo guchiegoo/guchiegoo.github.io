@@ -10,7 +10,7 @@
 
 export const hero = {
   headlineSlow: 'Grown slow.',
-  headlineFast: 'Built fast.',
+  headlineFast: 'Naturally fast.',
   subline: 'Everyday performance wear with a racing heart.',
   cta: 'Shop the drop',
 }
