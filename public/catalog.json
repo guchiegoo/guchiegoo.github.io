@@ -8,7 +8,7 @@
       "name": "Half-Zip Rolled Edge Fleece Sweatshirt",
       "priceCents": 6900,
       "images": [
-        "images/HZ/main.jpg",
+        "images/HZ/flower-gray.jpg",
         "images/HZ/oat-gray.jpg"
       ],
       "variants": [
@@ -67,12 +67,12 @@
       "name": "Oversize Fleeced Hoodie",
       "priceCents": 4800,
       "images": [
-        "images/HD/main.jpg",
         "images/HD/brown.jpg",
         "images/HD/coffee.jpg",
         "images/HD/klein-blue.jpg",
         "images/HD/medium-green.jpg",
-        "images/HD/pink.jpg"
+        "images/HD/pink.jpg",
+        "images/HD/white.jpg"
       ],
       "variants": [
         {
@@ -178,7 +178,7 @@
       "name": "Acid Wash Oversize Long Sleeve T-Shirt",
       "priceCents": 4200,
       "images": [
-        "images/AWLS/main.jpg"
+        "images/AWLS/pink.jpg"
       ],
       "variants": [
         {

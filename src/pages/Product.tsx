@@ -17,11 +17,23 @@ function defaultSize(style: CatalogStyle, color: string): string | null {
   return (sizes.find((s) => !s.soldOut) ?? sizes[0])?.size ?? null
 }
 
+/** "Klein Blue" -> "klein-blue", matching how a colour's own photo is named. */
+function imageSlug(color: string): string {
+  return color.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+}
+
+/** The index of this colour's own photo in style.images, by filename; 0 (the gallery default) when none matches. */
+function imageIndexForColor(style: CatalogStyle, color: string): number {
+  const slug = imageSlug(color)
+  const i = style.images.findIndex((path) => path.replace(/^.*\//, '').replace(/\.[^.]+$/, '') === slug)
+  return i === -1 ? 0 : i
+}
+
 function ProductDetail({ style, catalog }: { style: CatalogStyle; catalog: Catalog }) {
   const colors = useMemo(() => colorsFor(style), [style])
   const [color, setColor] = useState(() => (colors.find((c) => !c.soldOut) ?? colors[0])?.color ?? '')
   const [size, setSize] = useState(() => defaultSize(style, color))
-  const [imageIndex, setImageIndex] = useState(0)
+  const [imageIndex, setImageIndex] = useState(() => imageIndexForColor(style, color))
 
   const sizes = sizesFor(style, color)
   const variant = sizes.find((s) => s.size === size)?.variant ?? null
@@ -35,6 +47,7 @@ function ProductDetail({ style, catalog }: { style: CatalogStyle; catalog: Catal
   function pickColor(next: string) {
     setColor(next)
     setSize(defaultSize(style, next))
+    setImageIndex(imageIndexForColor(style, next))
   }
 
   // Show the chosen photo; GarmentArt (via ProductImage) covers styles without photos.

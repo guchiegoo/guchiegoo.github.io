@@ -70,6 +70,31 @@ describe('Product HZ', () => {
   })
 })
 
+describe('Product HD colour photos', () => {
+  it('shows each colour\'s own photo once picked, by matching its filename to the colour', async () => {
+    renderApp('/p/HD')
+    await screen.findByRole('group', { name: 'Colour' })
+    const photo = () => screen.getByRole('img', { name: /^Oversize Fleeced Hoodie in/ })
+    expect(photo()).toHaveAttribute('src', '/images/HD/brown.jpg')
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Medium Green' }))
+    expect(photo()).toHaveAttribute('src', '/images/HD/medium-green.jpg')
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'White' }))
+    expect(photo()).toHaveAttribute('src', '/images/HD/white.jpg')
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Brown' }))
+    expect(photo()).toHaveAttribute('src', '/images/HD/brown.jpg')
+  })
+
+  it('falls back to the gallery\'s first photo for a colour with no dedicated image', async () => {
+    const catalog = sampleCatalog()
+    styleOf(catalog, 'HD').images = ['images/HD/brown.jpg']
+    renderApp('/p/HD', catalog)
+    await screen.findByRole('group', { name: 'Colour' })
+    const photo = () => screen.getByRole('img', { name: /^Oversize Fleeced Hoodie in/ })
+    fireEvent.click(within(colourGroup()).getByRole('button', { name: 'Pink' }))
+    expect(photo()).toHaveAttribute('src', '/images/HD/brown.jpg')
+  })
+})
+
 describe('Product HD with a live buy link', () => {
   it('renders a Stripe link for Pink / M', async () => {
     const catalog = sampleCatalog()
